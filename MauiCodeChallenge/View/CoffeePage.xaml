@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+             x:Class="MauiCodeChallenge.View.CoffeePage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MauiCodeChallenge.Core.Model;assembly=MauiCodeChallenge.Core"
+             xmlns:viewmodel="clr-namespace:MauiCodeChallenge.Core.ViewModel;assembly=MauiCodeChallenge.Core"
+             x:DataType="viewmodel:CoffeeViewModel"
+             Title="{Binding Title}">
+
+        <CollectionView ItemsSource="{Binding Coffees}"
+                        SelectionMode="None"
+                        Grid.ColumnSpan="2">
+            <CollectionView.ItemTemplate >
+                <DataTemplate x:DataType="model:Coffee">
+                    <Grid Padding="10">
+                    <Label Text="{Binding Name}" FontSize="Body" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+</ContentPage>
